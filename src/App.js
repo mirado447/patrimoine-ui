@@ -2,7 +2,8 @@ import './App.css';
 import React, { useState } from 'react';
 import UserInputSection from './components/UserInputSection/UserInputSection';
 import OutputSection from './components/outputSection/OutputSection';
-import graphique from './images/statistic bord.jpg';
+import graphique1 from './images/statistic bord.jpg';
+import graphique2 from './images/bord.jpg';
 
 function App() {
   const [dateStart, setDateStart] = useState('');
@@ -14,6 +15,11 @@ function App() {
     obligations: false,
   });
   const [ownerName, setOwnerName] = useState('');
+  const [currentImage, setCurrentImage] = useState(graphique1);
+
+  const handleCalculateClick = () => {
+    setCurrentImage((prevImage) => (prevImage === graphique1 ? graphique2 : graphique1));
+  };
 
   return (
     <div className="App">
@@ -28,6 +34,7 @@ function App() {
             setSelectedOptions={setSelectedOptions}
             ownerName={ownerName}
             setOwnerName={setOwnerName}
+            onCalculateClick={handleCalculateClick}
           />
           <OutputSection
             selectedOptions={selectedOptions}
@@ -35,7 +42,7 @@ function App() {
           />
         </div>
         <div className="right-column">
-          <img src={graphique} alt="Graphique statique" />
+          <img src={currentImage} alt="Graphique statique" />
         </div>
       </div>
     </div>

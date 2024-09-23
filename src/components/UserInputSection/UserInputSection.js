@@ -7,6 +7,7 @@ function UserInputSection({
   setSelectedOptions,
   ownerName,
   setOwnerName,
+  onCalculateClick,
 }) {
   const handleCheckboxChange = (event) => {
     setSelectedOptions({
@@ -74,6 +75,7 @@ function UserInputSection({
           Obligations
         </label>
       </div>
+      <button onClick={onCalculateClick}>Calculer</button> {/* Bouton ajouté ici */}
     </div>
   );
 }
